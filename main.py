@@ -1,36 +1,118 @@
-# Diccionario de variables (TODAS las variables que usen deben registrarse acá, con sus tipos y propósitos)
+# Diccionarios de variables del ticket (solo las que podrían llegar a mostrarse en el ticket final)
+dicc = {
+    "bolivia": {
+        "norte": 2010, 
+        "sur": 1300,
 
-precio_fin = 0 #FLOAT. Cantidad de plata que se le mostrará al cliente en el ticket (variable acumuladora que se pasa de sección a sección)
-dist_prov = 0 #STR. Provincia destinataria del envío
+        "iva": 15
+    },
+    "paraguay": {
+        "norte": 1534, 
+        "sur"  : 1235,
 
-# NOTA: ya que tenemos el diccionario de referencia, acordemos que los nombres de todas las variables tengan un máximo de 2 palabras y lo más abreviadas posible (EJ: color, altura_base, cant_max) para mayor agilidad, pero siempre manteniéndose entendibles
+        "iva": 10
+    },
+    "uruguay": {
+        "unica": 995,
+
+        "iva": 22
+    },
+
+    "terrestre": 0.5,
+    "aereo": 0.8,
+
+    "embalaje": 450,
+    "fitosanitario": 150
+}
+
+venta = {
+    #"nombre": "x",
+    #"costo_base": 0.0,
+    #"pais": "x",
+    #"region": "referir a dicc",
+    #"transporte": "referir a dicc",
+    #"peso": 0,
+    #"eleccion_embalaje": True,
+    #"obligatorio_fitosanitario": True,
+    #"iva": "referir a dicc",
+    #"costo_fin": 0.0
+}
+# Las entradas de "venta" serán creadas en la sección que corresponda con los inputs del usuario.
+# Si es un key totalmente nuevo, irá, por ejemplo:
+#       venta[peso] = int(input("usuario, ingrese el peso del paquete: "))
+# Si es un key basado en un valor NUMÉRICO fijo del "dicc", irá, por ejemplo:
+#       venta[iva] = dicc[paraguay][iva]
 
 
 
+#               El profe dijo que el menú debería ir dentro de su propia función, el "main"
+def main():
+    # Recuerden mantener buena ortografía y espaciado en los textos que se muestran al usuario
+    print("\n" + "-"*69)
+    print(" "*4 + "¡Bienvenido al cotizador de exportación de SmartRoast S.A.!\nIntroduzca la información de su pedido y se le devolverá la cantidad\nexacta que pagaría por el total de la operación, incluyendo costos\nde transporte, IVA y otros recargos.")
+    print("-"*69 + "\n")
 
-# Recuerden mantener buena ortografía y espaciado en los textos que se muestran al usuario
-print("¡Bienvenido al cotizador de exportación de SmartRoast S.A.!\nIntroduzca la información de su pedido y se le devolverá la cantidad exacta que pagaría por el total de la operación, incluyendo costos de aduana e impuestos.")
+    print("****************** NOMBRE ******************")
+    print("limpiado")
+    print("*********************************************\n")
+
+    print("****************** COSTO BASE ******************")
+    print("limpiado")
+    print("*********************************************\n")
+
+    print("****************** PAÍS ******************")
+    print("limpiado")
+    print("*********************************************\n")
+
+    print("****************** REGIÓN ******************")
+    print("limpiado")
+    print("*********************************************\n")
+
+    print("****************** TRANSPORTE ******************")
+    print("limpiado")
+    print("*********************************************\n")
+
+    # ignorar Peso por ahora
+    # print("****************** PESO ******************")
+    # print("a decidir cómo usar")
+    # print("*********************************************\n")
+
+    print("****************** EMBALAJE ******************")
+    print("limpiado")
+    print("*********************************************\n")
 
 
-# SECCIÓN 1: Destino
-# pregunta al cliente los distintos datos sobre la dirección de destino en el siguiente orden: país (ofrece lista de opciones: Argentina, Chile, Bolivia, Uruguay), provincia, ciudad. Añadir distintas cantidades al acumulador principal "precio_fin" según las opciones seleccionadas (usar números cualquiera por ahora)
+
+#-----------------------------ESPACIO PARA FUNCIONES DE CÁLCULO------------------------------------
+def sumar_tarifa_fija(estado,tarifa):
+    resultado = 0
+    return resultado
+
+def calcular_flete(distancia,tarifa):
+    resultado = 0
+    return resultado
+
+def calcular_total():
+    # SOBRE costo_fin HAY QUE:
+    #sumar costo_base
+    #sumar resultado de sumar_tarifa_fija() con keys "eleccion_embalaje" y "embalaje"
+    #sumar resultado de sumar_tarifa_fija() con keys "obligatorio_fitosanitario" y "fitosanitario"
+    #sumar resultado de calcular_flete()
+
+    #dividir costo_fin por iva y reasignarlo sobre sí mismo
+    resultado = 0
+    return resultado
+#-----------------------------ESPACIO PARA FUNCIONES DE CÁLCULO------------------------------------
 
 
 
-# SECCIÓN 2: Peso
-# pregunta al cliente el peso del pedido en kilogramos. Añadir distintas cantidades al acumulador principal "precio_fin" según las opciones seleccionadas (usar números cualquiera por ahora)
+def imprimir_ticket():
+    # ticket mostrando precio final, un desglose de cada costo, y los datos no-númericos (nombre, país)
+    print()
 
 
 
-# SECCIÓN 3: Transporte
-# pregunta al cliente qué tipo de transporte desea según el país de Destino que eligió antes: si es en Argentina solo aparece opción terrestre, si es en cualquier otro puede elegir entre terrestre o aéreo. Añadir distintas cantidades al acumulador principal "precio_fin" según las opciones seleccionadas (usar números cualquiera por ahora)
-
-
-
-# SECCIÓN 4: Recargos
-# utiliza la información de Destino para saber qué recargos aduaneros aplicar. 
-
-
-
-# SECCIÓN 5: Ticket y QC
-# muestra el ticket con precio final y un desglose de los costos de cada sección. Realiza pruebas hasta romper el sistema y aplica Try-Excepts para evitar dichos errores
+# LO ÚNICO QUE EL PROGRAMA EJECUTA VERDADERAMENTE:
+main()
+precio_total = calcular_total()
+imprimir_ticket(precio_total)
